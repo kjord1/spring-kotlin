@@ -6,7 +6,7 @@ thumbs.db
 **/*.ipr
 **/*.iws
 **/*.iml
-.idea/*
+.idea/
 .idea_modules/
 !.idea/runConfigurations
 
