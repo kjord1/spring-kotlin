@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
 @Entity
-class Customer(
+data class Customer(
         @JsonProperty(required = true, value = "first_name")
         var firstName: String = "",
         @JsonProperty(required = true, value = "last_name")
