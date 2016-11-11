@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+thumbs.db
+
+# IntelliJ
+**/*.ipr
+**/*.iws
+**/*.iml
+.idea/*
+.idea_modules/
+!.idea/runConfigurations
+
+# Build products
+target/
+**/*.logs
+
