@@ -20,8 +20,13 @@ open class Application {
     private val log = LoggerFactory.getLogger(Application::class.java)
 
     @Bean
-    open fun objectMapperBuilder() : Jackson2ObjectMapperBuilder
-            = Jackson2ObjectMapperBuilder().modulesToInstall(KotlinModule())
+    open fun objectMapperBuilder() : Jackson2ObjectMapperBuilder {
+        val builder = Jackson2ObjectMapperBuilder().modulesToInstall(KotlinModule())
+        builder.indentOutput(true)
+        //builder.dateFormat(SimpleDateFormat("yyyy-MM-dd"))
+        //builder.propertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE)
+        return builder
+    }
 
     @Bean
     open fun init(repository: CustomerRepository) = CommandLineRunner {
