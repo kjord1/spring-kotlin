@@ -15,6 +15,9 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.web.context.WebApplicationContext
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.json.JSONObject
+import com.fasterxml.jackson.databind.ObjectMapper
+
+
 
 @RunWith(SpringJUnit4ClassRunner::class)
 @SpringBootTest
@@ -50,6 +53,8 @@ class CustomerControllerTest {
         val result = springMvc.perform(MockMvcRequestBuilders
                 .get("/customers/${customer.id}").accept(MediaType.APPLICATION_JSON)).andReturn()
         val content = result.response.contentAsString
-        SchemaFactory.getSchema("customer").validate(JSONObject(content))
+        val mapper = ObjectMapper()
+        val node = mapper.readTree(content)
+        SchemaFactory.getSchema("customer").validate(node)
     }
 }

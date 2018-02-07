@@ -1,16 +1,14 @@
 package com.monsanto.kotlin.api
 
-import org.everit.json.schema.Schema
-import org.everit.json.schema.loader.SchemaLoader
-import org.json.JSONObject
-import org.json.JSONTokener
+import com.networknt.schema.JsonSchema
+import com.networknt.schema.JsonSchemaFactory
 
 class SchemaFactory {
     companion object {
-        fun getSchema(schemaName: String): Schema {
+        fun getSchema(schemaName: String): JsonSchema {
             val inputStream = SchemaFactory::class.java.getResourceAsStream("/schemas/${schemaName}.json")
-            val rawSchema = JSONObject(JSONTokener(inputStream))
-            return SchemaLoader.load(rawSchema)
+            val factory = JsonSchemaFactory()
+            return factory.getSchema(inputStream)
         }
     }
 }
